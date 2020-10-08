@@ -2,9 +2,9 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   # any PV name
-  name: "hko-pv"
+  name: nfs-pv
 spec:
-  storageClassName: nfs001
+  storageClassName: nfs002
   capacity:
     # storage size
     storage: 10Gi
