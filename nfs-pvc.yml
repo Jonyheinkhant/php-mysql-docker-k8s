@@ -4,7 +4,7 @@ metadata:
   # any PVC name
   name: nfs-pvc
 spec:
-  storageClassName: nfs001
+  storageClassName: hko001
   accessModes:
   # ReadWriteMany(RW from multi nodes), ReadWriteOnce(RW from a node), ReadOnlyMany(R from multi nodes)
     - ReadWriteMany
