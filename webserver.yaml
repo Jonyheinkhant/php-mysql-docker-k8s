@@ -1,29 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webserver
-  labels:
-    app: apache
+  name: jupyter
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: apache
+      app: jupyter
   template:
     metadata:
       labels:
-        app: apache
+        app: jupyter
     spec:
       containers:
-      - name: php-apache
-        image: yenaing/php72
+      - name: jupyter
+        image: jupyter/tensorflow-notebook
         ports:
-        - containerPort: 80
+        - containerPort: 8888
         volumeMounts:
-        - name: hostvol
-          mountPath: /var/www/html/
+        - mountPath: “/books”
+          name: j-books
       volumes:
-        - name: hostvol
-          persistentVolumeClaim:
-            # PVC name you created
-            claimName: nfs-pvc
+      - name: j-books
+        persistentVolumeClaim:
+          claimName: jupyter-books
